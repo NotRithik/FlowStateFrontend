@@ -10,6 +10,21 @@ export interface Stream {
   avatarUrl: string;
 }
 
+export interface SablierStreamDisplay {
+  id: number;
+  streamId: string;
+  sender: string;
+  senderShort: string;
+  tokenSymbol: string;
+  tokenAddress: string;
+  balance: string;
+  withdrawable: string;
+  ratePerMonth: string;
+  status: string;
+  statusCode: number;
+  isActive: boolean;
+}
+
 export interface Pool {
   id: string;
   pair: string;
@@ -17,6 +32,11 @@ export interface Pool {
   apy: number;
   tvl: string;
   risk: 'Low' | 'Medium' | 'High';
+  currency0?: string;
+  currency1?: string;
+  fee?: number;
+  tickSpacing?: number;
+  hooks?: string;
 }
 
 export interface Investment {
@@ -38,4 +58,21 @@ export interface Token {
   symbol: string;
   name: string;
   price: number;
+}
+
+export interface Intent {
+  user: string;
+  streamId: bigint;
+  amount: bigint;
+  minBlock: bigint;
+  maxBlock: bigint;
+  nonce: bigint;
+  isSwap: boolean;
+  targetPool: {
+    currency0: string;
+    currency1: string;
+    fee: number;
+    tickSpacing: number;
+    hooks: string;
+  };
 }
